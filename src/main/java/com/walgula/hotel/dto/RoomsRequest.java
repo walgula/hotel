@@ -5,7 +5,7 @@ import java.util.List;
 
 @Data
 
-public class RoomsRequestDto {
+public class RoomsRequest {
     private int availablePremiumRooms;
     private int availableEconomyRooms;
     private List<Double> guestsPayments;
