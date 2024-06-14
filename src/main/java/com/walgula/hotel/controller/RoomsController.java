@@ -16,6 +16,15 @@ public class RoomsController {
 
     @PostMapping("/optimize")
     public RoomsOptimizationResponse optimize(@RequestBody RoomsRequestDto request) {
+        if (request.getAvailablePremiumRooms() <= 0 || request.getAvailableEconomyRooms() <= 0) {
+            throw new IllegalArgumentException("Room numbers must be greater than zero.");
+        }
+        if (request.getGuestsPayments().isEmpty()) {
+            throw new IllegalArgumentException("Payments must not be empty.");
+        }
+        if (request.getGuestsPayments().stream().anyMatch(x->x<=0)){
+            throw new IllegalArgumentException("Payments must be greater than zero.");
+        }
         return roomsOptimizationService.optimize(request.getAvailablePremiumRooms(),
                 request.getAvailableEconomyRooms(), request.getGuestsPayments());
     }
