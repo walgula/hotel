@@ -93,6 +93,18 @@ hotel/
     ```
     http://localhost:8080/swagger-ui.html or http://localhost:8080, it also will redirect you to swagger
     ```
+5. **Application status**
+   
+   Application has enabled actuator feature for monitoring purpose. Special endpoint is available here: 
+   ```
+   http://localhost:8080/actuator/health
+   ```
+   It produces output JSON as below:
+   ```json
+   {
+      "status": "UP"
+   }
+   ```
 
 ## API Endpoints
 
